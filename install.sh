@@ -225,7 +225,7 @@ if [[ $SKIP_CONF == 0 ]]; then
         fi
 
         read -p "Would you like to disable wall messages (y/N) " ANSWER
-        ./pv_conf.sh -s DisableWall -v "${[[ $ANSWER != "${ANSWER#[Yy]}" ]] && 1 || 0}" -i $COMPILED_SCRIPT
+        ./pv_conf.sh -s DisableWall -v "$([[ $ANSWER != "${ANSWER#[Yy]}" ]] && echo "1" || echo "0")" -i $COMPILED_SCRIPT
     else
         echo "Skipping the hibernation and slowing down the boot questions. These features rely on systemd."
     fi

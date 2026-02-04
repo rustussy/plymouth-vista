@@ -79,7 +79,7 @@ Defined whether annoying wall messages should be disabled or not.
 
 ##### Accepted values:
 - `0`: Keep wall messages.
-- `1`:  Disable wall messages.
+- `1`: Disable wall messages.
 
 ### PasswordTitle:
 Title of the password screen
