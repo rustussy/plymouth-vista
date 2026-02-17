@@ -28,7 +28,7 @@ fun ShutdownScreenNew(text, blurLocation) {
     self.BrandingSprite.SetX((GlobalWidth - self.BrandingImage.GetWidth()) / 2);
     self.BrandingSprite.SetY(GlobalHeight - self.BrandingImage.GetHeight() - 23);
 
-    self.Text = Image.Text(text, 1, 1, 1, 1, "Segoe UI 18");
+    self.Text = Image.Text(text, 1, 1, 1, 1, "Segoe UI 18", "center");
     self.TextSprite = Sprite();
 	self.TextSprite.SetImage(self.Text);
 
@@ -46,7 +46,7 @@ fun ShutdownScreenNew(text, blurLocation) {
         self.ShadowSprite.SetImage(self.ShadowImage);
         self.ShadowSprite.SetOpacity(0);
         self.ShadowSprite.SetZ(3);
-        self.ShadowSprite.SetX(self.TextX);
+        self.ShadowSprite.SetX(self.TextX - 5);
         self.ShadowSprite.SetY(self.TextY + 1);
     }
 
