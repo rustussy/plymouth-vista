@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=plymouth-vista
+Description=plymouth-vista is a boot screen which re-creates the Windows Vista start-up sequence.
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/plymouth-vista/images
+ScriptFile=/usr/share/plymouth/themes/plymouth-vista/plymouth-vista.script

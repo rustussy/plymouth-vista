@@ -43,7 +43,7 @@ If you are using something other than systemd and want to use these features, yo
 
 # Installation & Configuration:
 
-Clone this repository first by simply using `git clone https://github.com/furkrn/PlymouthVista`.
+Clone this repository first by simply using `git clone https://github.com/rustussy/plymouth-vista`.
 
 If you want to modify some of the text (e.g., show "Starting Linux" instead of "Starting Windows" on the Windows 7 boot screen or make your own [Windows 9 boot screen](https://crustywindo.ws/w/images/2/2a/Dilshad9-Boot.png)), please follow the [configuration guide](./CONFIG.md).
 
@@ -61,8 +61,8 @@ Also here are the available switches/arguments you can use on the install script
 Or simply run this script if you don't care about the extra configuration.
 
 ```sh
-git clone https://github.com/furkrn/PlymouthVista
-cd PlymouthVista
+git clone https://github.com/rustussy/plymouth-vista
+cd plymouth-vista
 chmod +x ./compile.sh ; chmod +x ./install.sh
 ./compile.sh ; sudo ./install.sh
 ```
@@ -81,23 +81,3 @@ This copy-paste script should help it:
 chmod +x ./uninstall.sh ; sudo ./uninstall.sh
 ```
 
-# Features
-
-1. Vista boot:
-![boot](screenshots/boot.gif)
-
-2. 7 boot:
-![seven](screenshots/seven.gif)
-
-3. Shutdown & Reboot screens & Update screen (Vista):
-*The update screen does not contain the Windows Vista orb like the original one; implementing this feature on Plymouth isn't possible because there's no way that I can get the startup sound working.*
-![shutdown](screenshots/shutdown.gif)
-
-4. Shutdown & Reboot screens & Update Screen (7):
-![seven_shutdown](screenshots/seven_shutdown.gif)
-
-5. Windows boot manager (Password):
-![password](screenshots/password.gif)
-
-6. Windows Boot Manager (Question):
-![question](screenshots/question.gif)
