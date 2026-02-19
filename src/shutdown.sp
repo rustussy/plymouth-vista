@@ -41,14 +41,15 @@ fun ShutdownScreenNew(text, blurLocation) {
     self.TextSprite.SetY(self.TextY);
 
     if (global.UseShadow) {
-        baseShadow = Image.Text(text, 0, 0, 0, 0.15, "Segoe UI 18", "center");
+        baseShadow = Image.Text(text, 0.15, 0.15, 0.15, 0.2, "Segoe UI 18", "center");
         offsets = [
+            [-1, -1],
             [2, 0],
             [0, 2],
             [2, 2],
         ];
         self.ShadowGroup = [];
-        self.ShadowCount = 3;
+        self.ShadowCount = 4;
         for (i = 0; i < self.ShadowCount; i++) {
             sprite = Sprite();
             sprite.SetImage(baseShadow);
