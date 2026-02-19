@@ -187,8 +187,8 @@ Defines whether the shadow effect should be applied or not.
 Modifying this value after installation requires the blur effects to be regenerated. Simply use the `./gen_blur.sh` script for it.
 
 ##### Accepted values:
-- `1`: Windows Vista style, don't show text shadow.
-- `0`: Windows 7 style, show text shadow.
+- `0`: Windows Vista style, don't show text shadow.
+- `1`: Windows 7 style, show text shadow.
 
 ### AuthuiStyle:
 Sets the background and branding image of the shutdown, reboot, and update screen.

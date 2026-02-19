@@ -38,7 +38,8 @@ for key in "${!config_values[@]}"; do
     dimensions=$(magick -density 96 -font "$FONT" -pointsize "$FONT_SIZE" label:"$value" \
     -format "%[fx:w+27]x%[fx:h+27]" info:)
 
-    [[ $key == *"Update"* ]] && pos="center" || pos="northwest"
+    #[[ $key == *"Update"* ]] && pos="center" || pos="northwest"
+    pos="center"
     [[ $key == *"Update"* ]] && ofs="+0+0" || ofs="+0+1"
 
     magick -density 96 -size "$dimensions" xc:none \
