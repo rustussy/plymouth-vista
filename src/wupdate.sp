@@ -1,5 +1,5 @@
 // PlymouthVista
-// Windows Update screen
+// Windows Updates screen
 // wupdate.sp
 
 fun UpdateScreenNew(baseText) {
@@ -45,14 +45,23 @@ fun UpdateScreenNew(baseText) {
     self.CurrentTextSprite.SetZ(4);
 
     if (global.UseShadow) {
-        shadow = Image("blurUpdate0.png");
-
-        self.CurrentShadowSprite = Sprite();
-        self.CurrentShadowSprite.SetImage(shadow);
-        self.CurrentShadowSprite.SetOpacity(0);
-        self.CurrentShadowSprite.SetZ(3);
-        self.CurrentShadowSprite.SetX(self.TextX - 5);
-        self.CurrentShadowSprite.SetY(self.TextY + 1);
+        baseShadow = Image.Text(baseTextString, 0, 0, 0, 0.15, "Segoe UI 18", "center");
+        offsets = [
+            [2, 0],
+            [0, 2],
+            [2, 2],
+        ];
+        self.ShadowGroup = [];
+        self.ShadowCount = 3;
+        for (i = 0; i < self.ShadowCount; i++) {
+            sprite = Sprite();
+            sprite.SetImage(baseShadow);
+            sprite.SetOpacity(0);
+            sprite.SetZ(3);
+            sprite.SetX(self.TextX + offsets[i][0]);
+            sprite.SetY(self.TextY + offsets[i][1]);
+            self.ShadowGroup[i] = sprite;
+        }
     }
 
     for (i = 0; i < 18; i++) {
@@ -85,9 +94,11 @@ fun UpdateScreenNew(baseText) {
         self.BrandingSprite.SetOpacity(1);
         self.CurrentTextSprite.SetOpacity(1);
         if (global.UseShadow) {
-            self.CurrentShadowSprite.SetOpacity(1);
+            for (i = 0; i < self.ShadowCount; i++) {
+                self.ShadowGroup[i].SetOpacity(1);
+            }
         }
-        
+
         self.DrawSpinners(self);
     }
 
@@ -95,8 +106,10 @@ fun UpdateScreenNew(baseText) {
         text = Image.Text(Format(self.BaseText, progress), 1, 1, 1, 1, "Segoe UI 18", "center");
         self.CurrentTextSprite.SetImage(text);
         if (global.UseShadow) {
-            shadow = Image("blurUpdate" + progress + ".png");
-            self.CurrentShadowSprite.SetImage(shadow);
+            baseShadow = Image.Text(Format(self.BaseText, progress), 0, 0, 0, 0.15, "Segoe UI 18", "center");
+            for (i = 0; i < self.ShadowCount; i++) {
+                self.ShadowGroup[i].SetImage(baseShadow);
+            }
         }
     }
 

@@ -1,5 +1,5 @@
 // PlymouthVista
-// Shutdown screen.
+// Shutdown screen
 // shutdown.sp
 
 fun ShutdownScreenNew(text, blurLocation) {
@@ -41,13 +41,23 @@ fun ShutdownScreenNew(text, blurLocation) {
     self.TextSprite.SetY(self.TextY);
 
     if (global.UseShadow) {
-        self.ShadowImage = Image(blurLocation);
-        self.ShadowSprite = Sprite();
-        self.ShadowSprite.SetImage(self.ShadowImage);
-        self.ShadowSprite.SetOpacity(0);
-        self.ShadowSprite.SetZ(3);
-        self.ShadowSprite.SetX(self.TextX - 5);
-        self.ShadowSprite.SetY(self.TextY + 1);
+        baseShadow = Image.Text(text, 0, 0, 0, 0.15, "Segoe UI 18", "center");
+        offsets = [
+            [2, 0],
+            [0, 2],
+            [2, 2],
+        ];
+        self.ShadowGroup = [];
+        self.ShadowCount = 3;
+        for (i = 0; i < self.ShadowCount; i++) {
+            sprite = Sprite();
+            sprite.SetImage(baseShadow);
+            sprite.SetOpacity(0);
+            sprite.SetZ(3);
+            sprite.SetX(self.TextX + offsets[i][0]);
+            sprite.SetY(self.TextY + offsets[i][1]);
+            self.ShadowGroup[i] = sprite;
+        }
     }
 
     for (i = 0; i < 18; i++) {
@@ -109,7 +119,9 @@ fun ShutdownScreenNew(text, blurLocation) {
     fun SetTextOpacity(self, opaque) {
         self.TextSprite.SetOpacity(opaque);
         if (global.UseShadow) {
-            self.ShadowSprite.SetOpacity(opaque);
+            for (i = 0; i < self.ShadowCount; i++) {
+                self.ShadowGroup[i].SetOpacity(opaque);
+            }
         }
     }
 
