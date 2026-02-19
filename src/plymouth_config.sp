@@ -130,8 +130,8 @@ global.LogoffText = "Logging off...";
 //Prerequisites
 //If you set UseShadow to 1 and modified this key after installation, please consider regenerating the blur effect after modifying.
 //Default Value:
-//"Configuring Windows Updates\n%i% complete\nDo not turn off your computer.
-global.UpdateTextMTL = "Configuring Windows Updates\n%i% complete\nDo not turn off your computer.";
+//"Configuring Windows updates\n%i% complete\nDo not turn off your computer.
+global.UpdateTextMTL = "Configuring Windows updates\n%i% complete\nDo not turn off your computer.";
 
 //Defines whether the Vista boot screen should be used or not:
 //Accepted values:
