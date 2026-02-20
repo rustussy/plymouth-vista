@@ -138,7 +138,6 @@ Text that is shown when the system is shutting down.
 
 ##### Prerequisites:
 - Only a single line of text is allowed. Don't use `/n`.
-- If you set `UseShadow` to `1` and modified this key after installation, please consider regenerating the blur effect after modifying.
 
 ##### Default value:
 `"Shutting down..."`
@@ -149,7 +148,6 @@ Text that is shown when the system is rebooting.
 
 ##### Prerequisites:
 - Only a single line of text is allowed. Don't use `/n`.
-- If you set `UseShadow` to `1` and modified this key after installation, please consider regenerating the blur effect after modifying.
 
 ##### Default value:
 `"Rebooting..."`
@@ -159,7 +157,6 @@ Text that is shown when the fake logoff will be shown.
 
 ##### Prerequisites:
 - Only a single line of text is allowed. Don't use `/n`.
-- If you set `UseShadow` to `1` and modified this key after installation, please consider regenerating the blur effect after modifying.
 
 ##### Default value:
 `"Logging off..."`
@@ -168,9 +165,6 @@ Text that is shown when the fake logoff will be shown.
 Text that is shown when the system is updating.
 - This text supports formatting. Use `%i` for number.
 - You can also use newline, unlike other screens. Simply use `\n` for newlines.
-
-##### Prerequisites
-- If you set `UseShadow` to `1` and modified this key after installation, please consider regenerating the blur effect after modifying.
 
 ##### Default Value:
 `"Configuring Windows Updates\n%i% complete\nDo not turn off your computer.`
@@ -184,7 +178,6 @@ Defines whether the Vista boot screen should be used or not:
 
 ### UseShadow:
 Defines whether the shadow effect should be applied or not.
-Modifying this value after installation requires the blur effects to be regenerated. Simply use the `./gen_blur.sh` script for it.
 
 ##### Accepted values:
 - `0`: Windows Vista style, don't show text shadow.

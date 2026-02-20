@@ -91,7 +91,7 @@ fun ReturnNormal() {
 	// Why are "update" and "firmware_upgrade" modes here? Because,
 	// - Fedora's BGRT theme shows spinner on "firmware_upgrade"
 	// - Fedora's BGRT theme shows spinner on "update"
-    if (mode == "boot" || mode == "update" || mode == "firmware_upgrade") {
+	if (mode == "boot" || mode == "update" || mode == "firmware_upgrade") {
 		if (global.UseLegacyBootScreen) {
 			if (global.ReturnFromHibernation && global.UseNoGuiResume) {
 				BootScreen = NewNoGUIBoot();
@@ -99,7 +99,6 @@ fun ReturnNormal() {
 			else {
 				BootScreen = LegacyBootScreenNew();
 			}
-
 		}
 		else {
 			if (global.ReturnFromHibernation) {
@@ -109,29 +108,23 @@ fun ReturnNormal() {
 				BootScreen = SevenBootScreenNew("boot");
 			}
 		}
-		
 		Plymouth.SetRefreshRate(12);
-
-    }
-    else if (mode == "shutdown") {
+	}
+  	else if (mode == "shutdown") {
 		text = "";
-		blur = "";
 		if (global.SpawnFakeLogoff) {
-			text = global.LogoffText;
-			blur = "blurLogoffText.png";
+		  text = global.LogoffText;
 		}
 		else {
-			text = global.ShutdownText;
-			blur = "blurShutdownText.png";
+		  text = global.ShutdownText;
 		}
-
-	    ShutdownScreen = ShutdownScreenNew(text, blur);
-	    Plymouth.SetRefreshRate(30);
-    }
-    else if (mode == "reboot") {
-	    ShutdownScreen = ShutdownScreenNew(global.RebootText, "blurRebootText.png");
-	    Plymouth.SetRefreshRate(30);
-    }
+    	ShutdownScreen = ShutdownScreenNew(text);
+    	Plymouth.SetRefreshRate(30);
+  	}
+  	else if (mode == "reboot") {
+  		ShutdownScreen = ShutdownScreenNew(global.RebootText);
+  		Plymouth.SetRefreshRate(30);
+  	}
 	else if (mode == "system-upgrade")
 	{
 		UpdateScreen = UpdateScreenNew(global.UpdateTextMTL);
