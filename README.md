@@ -80,24 +80,3 @@ This copy-paste script should help it:
 ```sh
 chmod +x ./uninstall.sh ; sudo ./uninstall.sh
 ```
-
-# Features
-
-1. Vista boot:
-![boot](screenshots/boot.gif)
-
-2. 7 boot:
-![seven](screenshots/seven.gif)
-
-3. Shutdown & Reboot screens & Update screen (Vista):
-*The update screen does not contain the Windows Vista orb like the original one; implementing this feature on Plymouth isn't possible because there's no way that I can get the startup sound working.*
-![shutdown](screenshots/shutdown.gif)
-
-4. Shutdown & Reboot screens & Update Screen (7):
-![seven_shutdown](screenshots/seven_shutdown.gif)
-
-5. Windows boot manager (Password):
-![password](screenshots/password.gif)
-
-6. Windows Boot Manager (Question):
-![question](screenshots/question.gif)
