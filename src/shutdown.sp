@@ -2,7 +2,7 @@
 // Shutdown screen
 // shutdown.sp
 
-fun ShutdownScreenNew(text, blurLocation) {
+fun ShutdownScreenNew(text) {
     local.self = [];
 
     self.BaseSprite = Sprite();
