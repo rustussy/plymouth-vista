@@ -45,12 +45,12 @@ fun UpdateScreenNew(baseText) {
     self.CurrentTextSprite.SetZ(4);
 
     if (global.UseShadow) {
-        baseShadow = Image.Text(baseTextString, 0, 0, 0, 0.2, "Segoe UI 18", "center");
+        baseShadow = Image.Text(baseTextString, 0.15, 0.15, 0.15, 0.2, "Segoe UI 18", "center");
         offsets = [
-            [-0.5, -0.5],
-            [2.5, 0],
+            [-1, -1],
+            [2, 0],
             [0, 2],
-            [2.5, 2],
+            [2, 2],
         ];
         self.ShadowGroup = [];
         self.ShadowCount = 4;
@@ -107,7 +107,7 @@ fun UpdateScreenNew(baseText) {
         text = Image.Text(Format(self.BaseText, progress), 1, 1, 1, 1, "Segoe UI 18", "center");
         self.CurrentTextSprite.SetImage(text);
         if (global.UseShadow) {
-            baseShadow = Image.Text(Format(self.BaseText, progress), 0, 0, 0, 0.2, "Segoe UI 18", "center");
+            baseShadow = Image.Text(Format(self.BaseText, progress), 0.15, 0.15, 0.15, 0.2, "Segoe UI 18", "center");
             for (i = 0; i < self.ShadowCount; i++) {
                 self.ShadowGroup[i].SetImage(baseShadow);
             }
