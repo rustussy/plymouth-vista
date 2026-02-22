@@ -3,3 +3,5 @@ ignore/
 ignore/*
 plymouth-vista.script
 blur*.png
+*Text.png
+Update*.png

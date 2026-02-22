@@ -113,21 +113,21 @@ fun ReturnNormal() {
   	else if (mode == "shutdown") {
 		text = "";
 		if (global.SpawnFakeLogoff) {
-			text = global.LogoffText;
+			text = "LogoffText";
 		}
 		else {
-			text = global.ShutdownText;
+			text = "ShutdownText";
 		}
     	ShutdownScreen = ShutdownScreenNew(text);
     	Plymouth.SetRefreshRate(30);
   	}
   	else if (mode == "reboot") {
-  		ShutdownScreen = ShutdownScreenNew(global.RebootText);
+  		ShutdownScreen = ShutdownScreenNew("RebootText");
   		Plymouth.SetRefreshRate(30);
   	}
 	else if (mode == "system-upgrade")
 	{
-		UpdateScreen = UpdateScreenNew(global.UpdateTextMTL);
+		UpdateScreen = UpdateScreenNew();
 		Plymouth.SetRefreshRate(30);
 	}
 

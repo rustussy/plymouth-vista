@@ -5,8 +5,6 @@
 fun UpdateScreenNew(baseText) {
     local.self = [];
 
-    self.BaseText = baseText;
-
     self.BaseSprite = Sprite();
     self.BaseImage = Image("authui_" + global.AuthuiStyle + ".png");
 
@@ -30,9 +28,7 @@ fun UpdateScreenNew(baseText) {
     self.BrandingSprite.SetX((GlobalWidth - self.BrandingImage.GetWidth()) / 2);
     self.BrandingSprite.SetY(GlobalHeight - self.BrandingImage.GetHeight() - 23);
 
-    baseTextString = Format(baseText, 0);
-    baseTextLine = CountLines(baseTextString);
-    baseText = Image.Text(baseTextString, 1, 1, 1, 1, "Segoe UI 18", "center");
+    baseText = Image("Update0.png");
 
     self.TextX = (GlobalWidth - baseText.GetWidth()) / 2;
     self.TextY = (GlobalHeight - baseText.GetHeight()) / 2 - 36;
@@ -45,25 +41,18 @@ fun UpdateScreenNew(baseText) {
     self.CurrentTextSprite.SetZ(4);
 
     if (global.UseShadow) {
-        baseShadow = Image.Text(baseTextString, 0.15, 0.15, 0.15, 0.2, "Segoe UI 18", "center");
-        offsets = [
-            [-1, -1],
-            [2, 0],
-            [0, 2],
-            [2, 2],
-        ];
-        self.ShadowGroup = [];
-        self.ShadowCount = 4;
-        for (i = 0; i < self.ShadowCount; i++) {
-            sprite = Sprite();
-            sprite.SetImage(baseShadow);
-            sprite.SetOpacity(0);
-            sprite.SetZ(3);
-            sprite.SetX(self.TextX + offsets[i][0]);
-            sprite.SetY(self.TextY + offsets[i][1]);
-            self.ShadowGroup[i] = sprite;
-        }
+        shadow = Image("blurUpdate0.png");
+        self.CurrentShadowSprite = Sprite();
+        self.CurrentShadowSprite.SetImage(shadow);
+        self.CurrentShadowSprite.SetOpacity(0);
+        self.CurrentShadowSprite.SetZ(3);
+        // The shadows have a 2px padding, and we want to offset it by 1px,
+        // so we use (TextX - 1, TextY - 1) to account for both.
+        self.CurrentShadowSprite.SetX(self.TextX - 1.5);
+        self.CurrentShadowSprite.SetY(self.TextY - 1);
     }
+
+    baseTextLine = CountLines(Format(global.UpdateTextMTL, 0));
 
     for (i = 0; i < 18; i++) {
         imageSpinner = Image("spinner_" + i + ".png");
@@ -95,22 +84,18 @@ fun UpdateScreenNew(baseText) {
         self.BrandingSprite.SetOpacity(1);
         self.CurrentTextSprite.SetOpacity(1);
         if (global.UseShadow) {
-            for (i = 0; i < self.ShadowCount; i++) {
-                self.ShadowGroup[i].SetOpacity(1);
-            }
+            self.CurrentShadowSprite.SetOpacity(1);
         }
 
         self.DrawSpinners(self);
     }
 
     fun UpdateText(self, progress) {
-        text = Image.Text(Format(self.BaseText, progress), 1, 1, 1, 1, "Segoe UI 18", "center");
+        text = Image("Update" + progress + ".png");
         self.CurrentTextSprite.SetImage(text);
         if (global.UseShadow) {
-            baseShadow = Image.Text(Format(self.BaseText, progress), 0.15, 0.15, 0.15, 0.2, "Segoe UI 18", "center");
-            for (i = 0; i < self.ShadowCount; i++) {
-                self.ShadowGroup[i].SetImage(baseShadow);
-            }
+            shadow = Image("blurUpdate" + progress + ".png");
+            self.CurrentShadowSprite.SetImage(shadow);
         }
     }
 
