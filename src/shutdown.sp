@@ -2,18 +2,12 @@
 // Shutdown screen
 // shutdown.sp
 
-fun ShutdownScreenNew(text) {
+fun ShutdownScreenNew(textName) {
     local.self = [];
 
     self.BaseSprite = Sprite();
-    self.BaseImage = Image("authui_" + global.AuthuiStyle + ".png");
-
-    self.ScaledX = self.BaseImage.GetWidth() * ScaleFactorXAuthui;
-    self.ScaledY = self.BaseImage.GetHeight() * ScaleFactorYAuthui;
-
-    self.BaseImageScaled = self.BaseImage.Scale(self.ScaledX, self.ScaledY);
-
-    self.BaseSprite.SetImage(self.BaseImageScaled);
+    self.BaseImage = Image("authui_" + global.AuthuiStyle + ".png").Scale(Window.GetWidth(), Window.GetHeight());
+    self.BaseSprite.SetImage(self.BaseImage);
     self.BaseSprite.SetOpacity(0);
     self.BaseSprite.SetZ(1);
 
@@ -28,7 +22,7 @@ fun ShutdownScreenNew(text) {
     self.BrandingSprite.SetX((GlobalWidth - self.BrandingImage.GetWidth()) / 2);
     self.BrandingSprite.SetY(GlobalHeight - self.BrandingImage.GetHeight() - 23);
 
-    self.Text = Image.Text(text, 1, 1, 1, 1, "Segoe UI 18", "center");
+    self.Text = Image("text" + textName + ".png");
     self.TextSprite = Sprite();
 	self.TextSprite.SetImage(self.Text);
 
@@ -41,24 +35,15 @@ fun ShutdownScreenNew(text) {
     self.TextSprite.SetY(self.TextY);
 
     if (global.UseShadow) {
-        baseShadow = Image.Text(text, 0.15, 0.15, 0.15, 0.2, "Segoe UI 18", "center");
-        offsets = [
-            [-1, -1],
-            [2, 0],
-            [0, 2],
-            [2, 2],
-        ];
-        self.ShadowGroup = [];
-        self.ShadowCount = 4;
-        for (i = 0; i < self.ShadowCount; i++) {
-            sprite = Sprite();
-            sprite.SetImage(baseShadow);
-            sprite.SetOpacity(0);
-            sprite.SetZ(3);
-            sprite.SetX(self.TextX + offsets[i][0]);
-            sprite.SetY(self.TextY + offsets[i][1]);
-            self.ShadowGroup[i] = sprite;
-        }
+        self.ShadowImage = Image("blur" + textName + ".png");
+        self.ShadowSprite = Sprite();
+        self.ShadowSprite.SetImage(self.ShadowImage);
+        self.ShadowSprite.SetOpacity(0);
+        self.ShadowSprite.SetZ(3);
+        // The shadows have a 2px padding, and we want to offset it by
+        // (0.5, 1), so we use (TextX - 1.5, TextY - 1) to account for both.
+        self.ShadowSprite.SetX(self.TextX - 1.5);
+        self.ShadowSprite.SetY(self.TextY - 1);
     }
 
     for (i = 0; i < 18; i++) {
@@ -120,9 +105,7 @@ fun ShutdownScreenNew(text) {
     fun SetTextOpacity(self, opaque) {
         self.TextSprite.SetOpacity(opaque);
         if (global.UseShadow) {
-            for (i = 0; i < self.ShadowCount; i++) {
-                self.ShadowGroup[i].SetOpacity(opaque);
-            }
+            self.ShadowSprite.SetOpacity(opaque);
         }
     }
 

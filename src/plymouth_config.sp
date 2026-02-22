@@ -102,6 +102,7 @@ global.ScaleBootManager = 0;
 //Text that is shown when the system is shutting down.
 //Prerequisites:
 //Only a single line of text is allowed. Don't use /n.
+//If you modified this key after installation, please re-run gen_blur.sh.
 //Default value:
 //"Shutting down..."
 global.ShutdownText = "Shutting down...";
@@ -110,6 +111,7 @@ global.ShutdownText = "Shutting down...";
 //Both Windows 7 and Windows Vista use Shutting Down... instead of Rebooting... but to make this screen make more sense, you will see Rebooting... as the default value.
 //Prerequisites:
 //Only a single line of text is allowed. Don't use /n.
+//If you modified this key after installation, please re-run gen_blur.sh.
 //Default value:
 //"Rebooting..."
 global.RebootText = "Rebooting...";
@@ -117,6 +119,7 @@ global.RebootText = "Rebooting...";
 //Text that is shown when the fake logoff will be shown.
 //Prerequisites:
 //Only a single line of text is allowed. Don't use /n.
+//If you modified this key after installation, please re-run gen_blur.sh.
 //Default value:
 //"Logging off..."
 global.LogoffText = "Logging off...";
@@ -124,6 +127,7 @@ global.LogoffText = "Logging off...";
 //Text that is shown when the system is updating.
 //This text supports formatting. Use %i for number.
 //You can also use newline, unlike other screens. Simply use \n for newlines.
+//If you modified this key after installation, please re-run gen_blur.sh.
 //Prerequisites
 //Default Value:
 //"Configuring Windows updates\n%i% complete\nDo not turn off your computer.
@@ -136,6 +140,7 @@ global.UpdateTextMTL = "Configuring Windows updates\n%i% complete\nDo not turn o
 global.UseLegacyBootScreen = 1;
 
 //Defines whether the shadow effect should be applied or not.
+//Setting this value to 1 after installation requires re-running gen_blur.sh.
 //Accepted values:
 //0: Windows Vista style, don't show text shadow.
 //1: Windows 7 style, show text shadow.
