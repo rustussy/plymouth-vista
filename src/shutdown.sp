@@ -35,8 +35,7 @@ fun ShutdownScreenNew(textName) {
     self.TextSprite.SetY(self.TextY);
 
     if (global.UseShadow) {
-        blurLocation = "blur" + textName + ".png";
-        self.ShadowImage = Image(blurLocation);
+        self.ShadowImage = Image("blur" + textName + ".png");
         self.ShadowSprite = Sprite();
         self.ShadowSprite.SetImage(self.ShadowImage);
         self.ShadowSprite.SetOpacity(0);

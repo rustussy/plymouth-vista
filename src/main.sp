@@ -122,8 +122,7 @@ fun ReturnNormal() {
   		ShutdownScreen = ShutdownScreenNew("RebootText");
   		Plymouth.SetRefreshRate(30);
   	}
-	else if (mode == "system-upgrade")
-	{
+	else if (mode == "system-upgrade") {
 		UpdateScreen = UpdateScreenNew();
 		Plymouth.SetRefreshRate(30);
 	}

@@ -17,7 +17,7 @@ if [[ ! -f "pv_conf.sh" ]]; then
 fi
 
 for key in ${config_keys[@]}; do
-    config_values[$key]=$(sh ./pv_conf.sh -g $key)
+    config_values[$key]=$(./pv_conf.sh -g $key)
 done
 
 unformattedText=${config_values["UpdateTextMTL"]}
@@ -30,7 +30,13 @@ done
 
 unset config_values["UpdateTextMTL"]
 
-echo "Generating images..."
+use_shadow=$(./pv_conf.sh -g UseShadow)
+
+if [[ $use_shadow == 1 ]]; then
+    echo "Generating images with shadows..."
+else
+    echo "Generating images without shadows..."
+fi
 
 for key in "${!config_values[@]}"; do
     value=${config_values[$key]}
@@ -43,12 +49,14 @@ for key in "${!config_values[@]}"; do
         -gravity center \
         -annotate +0+0 "$value" "./images/text$key.png"
 
-    magick "./images/text$key.png" \
-        -bordercolor none -border 2 \
-        -fill "rgb(20,20,20)" -colorize 100 \
-        -blur 0x1 \
-        -channel A -evaluate multiply 0.6 +channel \
-        "./images/blur$key.png"
+    if [[ $use_shadow == 1 ]]; then
+        magick "./images/text$key.png" \
+            -bordercolor none -border 2 \
+            -fill "rgb(20,20,20)" -colorize 100 \
+            -blur 0x1 \
+            -channel A -evaluate multiply 0.6 +channel \
+            "./images/blur$key.png"
+    fi
 done
 
 echo "Done."

@@ -12,6 +12,8 @@ Special thanks to [catpswin56](https://gitgud.io/catpswin56) for VTP and accepti
 
 Special thanks to [wackyideas](https://gitgud.io/wackyideas) for ATP and accepting my merge request that adds this theme to their repository.
 
+Special thanks to [DuCanhGH](https://github.com/DuCanhGH) for better Windows 7 shadows.
+
 This project is a fan-made labor of love that sees absolutely no profit whatsoever, donations or otherwise.
 
 # Prerequisites
