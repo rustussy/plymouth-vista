@@ -2,7 +2,7 @@
 // Windows Updates screen
 // wupdate.sp
 
-fun UpdateScreenNew(baseText) {
+fun UpdateScreenNew() {
     local.self = [];
 
     self.BaseSprite = Sprite();
