@@ -40,13 +40,11 @@ fun UpdateScreenNew(baseText) {
         self.CurrentShadowSprite.SetImage(shadow);
         self.CurrentShadowSprite.SetOpacity(0);
         self.CurrentShadowSprite.SetZ(3);
-        // The shadows have a 2px padding, and we want to offset it by 1px,
-        // so we use (TextX - 1, TextY - 1) to account for both.
+        // The shadows have a 2px padding, and we want to offset it by
+        // (0.5, 1), so we use (TextX - 1.5, TextY - 1) to account for both.
         self.CurrentShadowSprite.SetX(self.TextX - 1.5);
         self.CurrentShadowSprite.SetY(self.TextY - 1);
     }
-
-    baseTextLine = CountLines(Format(global.UpdateTextMTL, 0));
 
     for (i = 0; i < 18; i++) {
         imageSpinner = Image("spinner_" + i + ".png");
@@ -58,12 +56,7 @@ fun UpdateScreenNew(baseText) {
         sprite.SetZ(10);
 
         sprite.SetX(self.TextX - 8 - imageSpinner.GetWidth());
-        if (baseTextLine == 1) {
-            sprite.SetY(self.TextY + imageSpinner.GetHeight() / 3);
-        }
-        else {
-            sprite.SetY(self.TextY + baseTextLine * 2 * imageSpinner.GetHeight() / 3);
-        }
+        sprite.SetY((GlobalHeight - imageSpinner.GetHeight()) / 2 - 36);
 
         self.Spinners[i] = sprite;
     }

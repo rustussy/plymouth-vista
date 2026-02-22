@@ -17,7 +17,7 @@ if [[ ! -f "pv_conf.sh" ]]; then
 fi
 
 for key in ${config_keys[@]}; do
-    config_values[$key]=$(./pv_conf.sh -g $key)
+    config_values[$key]=$(sh ./pv_conf.sh -g $key)
 done
 
 unformattedText=${config_values["UpdateTextMTL"]}
@@ -35,15 +35,13 @@ echo "Generating images..."
 for key in "${!config_values[@]}"; do
     value=${config_values[$key]}
 
-    dimensions=$(magick -density 96 -font "$FONT" -pointsize "$FONT_SIZE" label:"$value" \
-    -format "%[fx:w]x%[fx:h]" info:)
+    dimensions=$(magick -density 96 -font "$FONT" -pointsize "$FONT_SIZE" label:"$value" -format "%[fx:w]x%[fx:h]" info:)
 
     magick -density 96 -size "$dimensions" xc:none \
         -font "$FONT" -pointsize "$FONT_SIZE" \
         -fill white \
         -gravity center \
-        -annotate +0+0 "$value" \
-        +repage "./images/text$key.png"
+        -annotate +0+0 "$value" "./images/text$key.png"
 
     magick "./images/text$key.png" \
         -bordercolor none -border 2 \

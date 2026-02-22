@@ -41,8 +41,8 @@ fun ShutdownScreenNew(textName) {
         self.ShadowSprite.SetImage(self.ShadowImage);
         self.ShadowSprite.SetOpacity(0);
         self.ShadowSprite.SetZ(3);
-        // The shadows have a 2px padding, and we want to offset it by 1px,
-        // so we use (TextX - 1, TextY - 1) to account for both.
+        // The shadows have a 2px padding, and we want to offset it by
+        // (0.5, 1), so we use (TextX - 1.5, TextY - 1) to account for both.
         self.ShadowSprite.SetX(self.TextX - 1.5);
         self.ShadowSprite.SetY(self.TextY - 1);
     }
