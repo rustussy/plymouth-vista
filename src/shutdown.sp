@@ -6,8 +6,7 @@ fun ShutdownScreenNew(textName) {
     local.self = [];
 
     self.BaseSprite = Sprite();
-    self.BaseImage = Image("authui_" + global.AuthuiStyle + ".png");
-
+    self.BaseImage = Image("authui_" + global.AuthuiStyle + ".png").Scale(Window.GetWidth(), Window.GetHeight());
     self.BaseSprite.SetImage(self.BaseImage);
     self.BaseSprite.SetOpacity(0);
     self.BaseSprite.SetZ(1);
@@ -23,7 +22,7 @@ fun ShutdownScreenNew(textName) {
     self.BrandingSprite.SetX((GlobalWidth - self.BrandingImage.GetWidth()) / 2);
     self.BrandingSprite.SetY(GlobalHeight - self.BrandingImage.GetHeight() - 23);
 
-    self.Text = Image(textName + ".png");
+    self.Text = Image("text" + textName + ".png");
     self.TextSprite = Sprite();
 	self.TextSprite.SetImage(self.Text);
 

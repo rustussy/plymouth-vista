@@ -6,14 +6,8 @@ fun UpdateScreenNew(baseText) {
     local.self = [];
 
     self.BaseSprite = Sprite();
-    self.BaseImage = Image("authui_" + global.AuthuiStyle + ".png");
-
-    self.ScaledX = self.BaseImage.GetWidth() * ScaleFactorXAuthui;
-    self.ScaledY = self.BaseImage.GetHeight() * ScaleFactorYAuthui;
-
-    self.BaseImageScaled = self.BaseImage.Scale(self.ScaledX, self.ScaledY);
-
-    self.BaseSprite.SetImage(self.BaseImageScaled);
+    self.BaseImage = Image("authui_" + global.AuthuiStyle + ".png").Scale(Window.GetWidth(), Window.GetHeight());
+    self.BaseSprite.SetImage(self.BaseImage);
     self.BaseSprite.SetOpacity(0);
     self.BaseSprite.SetZ(1);
 
@@ -28,7 +22,7 @@ fun UpdateScreenNew(baseText) {
     self.BrandingSprite.SetX((GlobalWidth - self.BrandingImage.GetWidth()) / 2);
     self.BrandingSprite.SetY(GlobalHeight - self.BrandingImage.GetHeight() - 23);
 
-    baseText = Image("Update0.png");
+    baseText = Image("textUpdate0.png");
 
     self.TextX = (GlobalWidth - baseText.GetWidth()) / 2;
     self.TextY = (GlobalHeight - baseText.GetHeight()) / 2 - 36;
@@ -91,7 +85,7 @@ fun UpdateScreenNew(baseText) {
     }
 
     fun UpdateText(self, progress) {
-        text = Image("Update" + progress + ".png");
+        text = Image("textUpdate" + progress + ".png");
         self.CurrentTextSprite.SetImage(text);
         if (global.UseShadow) {
             shadow = Image("blurUpdate" + progress + ".png");
